@@ -11,7 +11,7 @@ public abstract class CalculatorButton extends JButton
 implements ActionListener{
 	
 	
-	private State state;
+	public State state;
 
 	public CalculatorButton(String s , State state) {
 		super(s);
