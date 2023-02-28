@@ -1,4 +1,4 @@
-package Lab5;
+package Labb5;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
