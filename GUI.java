@@ -77,11 +77,11 @@ public class GUI extends JFrame implements ActionListener{
 			display.setText(e.getSource().toString());
 		}
 	
-/*	// main method
+	// main method
 	public static void main(String args[]) {
 		// creating instance of Frame class
 		new GUI();
 	}
-*/	
+	
 	
 }
