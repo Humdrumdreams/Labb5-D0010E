@@ -1,17 +1,15 @@
 package labb5;
 
-public class Situation {
+import javax.swing.JLabel;
+import labb5.Buttons.BinOpButton;
 
-	
-	
-	//Input 1 
-	
-	
-	//Opready
-	
-	
-	//Input 2
-	
-	
-	//Has result 
+public class Situation {
+	State state = State.Input1;
+	JLabel display;
+	BinOpButton binaryOperator;
+	int leftOperand;
+
+	Situation(JLabel display){
+		this.display = display;
+	}
 }
