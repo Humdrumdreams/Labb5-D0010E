@@ -2,5 +2,5 @@ package labb5;
 
 
 public enum State {
-	Input1, OpReade, Input2, HasResult
+	Input1, OpReady, Input2, HasResult
 }
