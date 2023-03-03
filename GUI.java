@@ -51,10 +51,10 @@ public class GUI extends JFrame implements ActionListener{
 		
 		//Create buttons
 		for (int i = 0; i<16; i++) {
-			button = new JButton(); //Change class to calculatorButton
-			button.setText("Button"+Integer.toString(i));
-			keyPad.add(button, gbd);
-			button.addActionListener(this);
+			Situation situation = new Situation(display);
+			EqualsButton eButton = new EqualsButton(situation, "equals", State.Input1);
+			keyPad.add(eButton, gbd);
+			System.out.println(eButton.state);
 		}
 		
 		//Add
@@ -71,16 +71,16 @@ public class GUI extends JFrame implements ActionListener{
 	    this.setVisible(true);
 		}
 	
-	public void actionPerformed(ActionEvent e) {
-		int input ;
-		
-			display.setText(e.getSource().toString());
-		}
-	
 	// main method
 	public static void main(String args[]) {
 		// creating instance of Frame class
 		new GUI();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
