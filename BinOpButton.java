@@ -3,6 +3,8 @@ package labb5;
 import java.awt.Color;
 import java.util.function.IntBinaryOperator;
 
+import javax.swing.border.LineBorder;
+
 @SuppressWarnings("serial")
 public class BinOpButton extends CalculatorButton {
 	
@@ -14,10 +16,9 @@ public class BinOpButton extends CalculatorButton {
 	}
 	
 	void setActive(boolean state) {
-		this.setBackground(state ? Color.RED : Color.WHITE);
+		this.setBorder(state ? new LineBorder(Color.RED) : new LineBorder(Color.GRAY));
 	}
 
-	@Override
 	public void transition() {
 		switch(situation.state) {
 		case Input1: 
@@ -26,6 +27,7 @@ public class BinOpButton extends CalculatorButton {
 			situation.state = State.OpReady;
 			situation.binaryOperator = this;
 			setActive(true);
+			break;
 		case Input2:
 			break;
 		case OpReady:
