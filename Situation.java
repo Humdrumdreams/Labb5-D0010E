@@ -1,7 +1,6 @@
-package labb5;
+package Lab5;
 
 import javax.swing.JLabel;
-import labb5.Buttons.BinOpButton;
 
 public class Situation {
 	State state = State.Input1;

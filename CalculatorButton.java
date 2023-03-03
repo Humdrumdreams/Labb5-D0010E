@@ -1,41 +1,39 @@
-package labb5.Buttons;
+package Lab5;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-public abstract class CalculatorButton extends JButton implements ActionListener{
+
+public abstract class CalculatorButton extends JButton 
+implements ActionListener{
 	
-	
-	public CalculatorButton(String s, ) {
-		
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	Situation situation;
+
+	public CalculatorButton(String label , Situation situation) {
+		super(label);
+		this.setFont(new Font("monspaced", Font.PLAIN, 20));
+		this.setForeground(Color.BLACK);
+		this.setBackground(Color.WHITE);
+		this.addActionListener(this);
+		this.situation = situation;
 	}
-	
-	
-	
-	abstract public void transition();
-	
-	
-	switch(num) {
-		case 1: //Input 1
-		
-		case 2: //OpReady
-			
-		case 3: //Input 3
-			
-		case 4: //HasResult
-			
-			
-	
-	
-	}
-	
-			
 	
 	public void actionPerformed(ActionEvent e) {
-		//count ++;
-		//label.setText("Number of clicks: " + count);
-		
+		this.transition();
 	}
+	
+		public abstract void transition();
+		
+	
+	
 }

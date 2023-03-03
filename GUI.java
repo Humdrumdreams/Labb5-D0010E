@@ -1,33 +1,29 @@
-package Labb5;
+package Lab5;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+@SuppressWarnings("serial")
 public class GUI extends JFrame implements ActionListener{
-	GridBagLayout bagLayout = new GridBagLayout();
-	GridLayout layout = new GridLayout(0,4);
-	GridBagConstraints gbd = new GridBagConstraints();
-	private JPanel canvas;
+	private GridBagLayout bagLayout = new GridBagLayout();
+	private GridLayout layout = new GridLayout(4,4,2,2);
+	private GridBagConstraints gbd = new GridBagConstraints();
 	
+	private JPanel canvas;
 	private JLabel display;
 	private JPanel keyPad;
-	
-	private JButton button;
 	
 	public GUI() {
 		//Set Main Frame
 		this.setTitle("Miniräknare");
 	    this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-	    this.setSize(new Dimension(500,450));
+	    this.setSize(new Dimension(300,150));
 	    this.setResizable(false);
 	    
 	    //Create Canvas	    
@@ -40,7 +36,7 @@ public class GUI extends JFrame implements ActionListener{
 		//Create Display
 		display = new JLabel("0", JLabel.RIGHT);
 		display.setFont(new Font("TIMES NEW ROMAN", Font.BOLD, 30));
-		display.setPreferredSize(new Dimension(339,50));
+		display.setPreferredSize(new Dimension(200,50));
 		display.setBackground(Color.LIGHT_GRAY);//??????
 		display.setOpaque(true);
 		display.setBorder(new LineBorder(Color.BLACK, 2));
@@ -49,13 +45,34 @@ public class GUI extends JFrame implements ActionListener{
 		keyPad = new JPanel();
 		keyPad.setLayout(layout);
 		
+		Situation situation = new Situation(display);
+		
 		//Create buttons
-		for (int i = 0; i<16; i++) {
-			button = new JButton(); //Change class to calculatorButton
-			button.setText("Button"+Integer.toString(i));
-			keyPad.add(button, gbd);
-			button.addActionListener(this);
-		}
+			keyPad.add(new DigitButton("7", situation));
+			keyPad.add(new DigitButton("8", situation));
+			keyPad.add(new DigitButton("9", situation));
+			keyPad.add(new BinOpButton("/", situation, (a,b) -> (a/b)));
+			
+			keyPad.add(new DigitButton("4", situation));
+			keyPad.add(new DigitButton("5", situation));
+			keyPad.add(new DigitButton("6", situation));
+			keyPad.add(new BinOpButton("*", situation, (a,b) -> (a*b)));
+
+
+			keyPad.add(new DigitButton("1", situation));
+			keyPad.add(new DigitButton("2", situation));
+			keyPad.add(new DigitButton("3", situation));
+			keyPad.add(new BinOpButton("-", situation, (a,b) -> (a-b)));
+
+
+			keyPad.add(new DigitButton("0", situation));
+			keyPad.add(new EqualsButton("=", situation));
+			keyPad.add(new CancelButton("C", situation));
+			keyPad.add(new BinOpButton("+", situation, (a,b) -> (a+b)));
+			if (situation.state == State.Input1) {
+
+				situation.display.setText("0");
+			}
 		
 		//Add
 		gbd.gridx = 0;
@@ -71,16 +88,16 @@ public class GUI extends JFrame implements ActionListener{
 	    this.setVisible(true);
 		}
 	
-	public void actionPerformed(ActionEvent e) {
-		int input ;
-		
-			display.setText(e.getSource().toString());
-		}
-	
 	// main method
 	public static void main(String args[]) {
 		// creating instance of Frame class
 		new GUI();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
