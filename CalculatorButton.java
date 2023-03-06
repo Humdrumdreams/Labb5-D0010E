@@ -1,4 +1,4 @@
-package labb5;
+package Lab5;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,7 +13,11 @@ implements ActionListener{
 	
 
 
-	public Situation situation;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	Situation situation;
 
 	public CalculatorButton(String label , Situation situation) {
 		super(label);
@@ -33,5 +37,3 @@ implements ActionListener{
 	
 	
 }
-	
-	
