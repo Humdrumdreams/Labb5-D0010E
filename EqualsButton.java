@@ -1,7 +1,9 @@
-package labb5;
+package Lab5;
 
+@SuppressWarnings("serial")
 public class EqualsButton extends CalculatorButton{
-	EqualsButton(String label, Situation situation){
+
+	public EqualsButton(String label, Situation situation){
 		super(label, situation);
 	}
 	public void transition() {
@@ -12,20 +14,20 @@ public class EqualsButton extends CalculatorButton{
 			break;
 		case Input2:
 			int rightOperand = Integer.parseInt(situation.display.getText());
-			
 			int result = 0;
 			
-		try {
-			result = situation.binaryOperator.operator.applyAsInt(situation.leftOperand, rightOperand);
-			
-		}
-		catch(ArithmeticException e){
-			situation.display.setText("Error");	
-		}
-		situation.binaryOperator.setActive(false);
-		situation.binaryOperator = null;
-		situation.state = State.HasResult;
-		break;
+			try {
+				result = situation.binaryOperator.getOperator().applyAsInt(situation.leftOperand, rightOperand);
+				situation.display.setText(Integer.toString(result));				
+			}
+			catch(ArithmeticException e){
+				situation.display.setText("Error");	
+			}
+			situation.binaryOperator.setActive(false);
+			situation.leftOperand = 0;
+			situation.state = State.HasResult;
+
+			break;
 		
 		}
 	}
