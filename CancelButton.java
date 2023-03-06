@@ -1,4 +1,4 @@
-package labb5;
+package Lab5;
 
 public class CancelButton extends CalculatorButton{
 	CancelButton(String label, Situation situation){
