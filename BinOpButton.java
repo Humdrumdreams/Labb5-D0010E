@@ -1,4 +1,4 @@
-package labb5;
+package Lab5;
 
 import java.awt.Color;
 import java.util.function.IntBinaryOperator;
@@ -8,11 +8,11 @@ import javax.swing.border.LineBorder;
 @SuppressWarnings("serial")
 public class BinOpButton extends CalculatorButton {
 	
-	IntBinaryOperator operator;
+	private IntBinaryOperator operator;
 
 	public BinOpButton (String label, Situation situation, IntBinaryOperator operator) {
 		super(label, situation);	
-		this.operator = operator;
+		this.setOperator(operator);
 	}
 	
 	void setActive(boolean state) {
@@ -36,5 +36,13 @@ public class BinOpButton extends CalculatorButton {
 			setActive(true);
 			break;
 		}
+	}
+
+	public IntBinaryOperator getOperator() {
+		return operator;
+	}
+
+	public void setOperator(IntBinaryOperator operator) {
+		this.operator = operator;
 	}
 }
