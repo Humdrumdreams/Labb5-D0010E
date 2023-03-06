@@ -1,6 +1,8 @@
-package labb5;
+package Lab5;
 
+import java.awt.Color;
 
+import javax.swing.border.LineBorder;
 
 public  class DigitButton extends CalculatorButton {
 		
@@ -15,13 +17,13 @@ public  class DigitButton extends CalculatorButton {
 	public DigitButton(String label, Situation situation) {
 		super(label, situation);
 	}
-	
+
 	public void transition() {
 		String digit = this.getText();
+		String displayText = situation.display.getText();
 		switch(situation.state) {
 		case Input1:
 		case Input2: 
-			String displayText = situation.display.getText();
 			if(displayText.equals("0")) {
 				if(digit.equals("0")) {
 					return;
@@ -29,6 +31,7 @@ public  class DigitButton extends CalculatorButton {
 				displayText = digit;
 			}
 			else {
+				//displayText="";
 				displayText += digit;
 			}
 			situation.display.setText(displayText);
@@ -39,7 +42,7 @@ public  class DigitButton extends CalculatorButton {
 			break;
 		case HasResult:
 			situation.display.setText(digit);
-			situation.state = State.Input2;
+			situation.state = State.Input1;
 			break;
 		}
 		
